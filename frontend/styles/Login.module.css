@@ -1,0 +1,68 @@
+.navbar{
+    width: 100%;
+    height: 100px;
+    /* border: solid 1px; */
+    padding-left: 10%;
+    padding-right: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.middle{
+    width: 100%;
+    height: 450px;
+    /* border: solid 1px black; */
+    padding-right: 15%;
+    padding-left: 15%;
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    background-image: url('../public/background1.png');
+}
+.content{
+    width: auto;
+    height: 350px;
+    border: 1px solid ;
+    padding: 20px ;
+}
+.login{
+    width: 350px;
+    height: 350px;
+    border: 1px solid yellow;
+    padding: 20px ;
+    background:white;
+}
+.loginbutton{
+    background-color: green;
+    color: white;
+    width: 100%;
+}
+
+.line{
+    display: flex;
+    flex-direction: row;
+}
+.line:before, .line:after{
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid rgb(189, 189, 189);
+    margin: auto;
+}
+.line:before {
+    margin-right: 10px
+}
+.line:after {
+    margin-left: 10px
+}
+
+.loginchoice{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* border: 1px solid; */
+    width: fit-content;
+}
+
+.footer{
+    background: ghostwhite;
+}
