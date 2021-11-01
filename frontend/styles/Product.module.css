@@ -82,3 +82,77 @@
 .navbar button:nth-child(2):hover{
     transform: scale(1.05);
 }
+
+.content{
+    height: 500px;
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    background: rgb(240, 240, 240);
+}
+.category{
+    width: 18%;
+    border: 1px solid rgb(236, 236, 236);
+    box-shadow: 0 0 0.5px 0.5px #d1d1d1;
+    background: rgb(255, 255, 255);
+}
+.category div{
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
+    /* transition: 0.3s; */
+}
+.category div:hover{
+    color: black;
+    /* background: orange; */
+    border: 1px solid rgb(236, 236, 236) ;
+}
+.pagination{
+    width: 60%;
+    border: 1px solid rgb(223, 223, 223);
+    padding: 0px;
+}
+.paginationimage{
+    position: relative;
+    width: 100%;
+    height: 390px;
+    background: rgb(211, 211, 211);
+}
+.paginationselect{
+    display: flex;
+    border: black;
+}
+.paginationselect div{
+    font-size: 18px;
+    width: 25%;
+    border: 1px solid rgb(230, 230, 230);
+    text-align: center;
+    background: white;
+    cursor: pointer;
+}
+.paginationselect div:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px red;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+.paginationselect div:hover:after { 
+    color: red;
+    transform: scaleX(1); 
+}
+.paginationselect p:hover{
+    color: red;
+}
+/* .paginationselect div:hover{
+    color: red;
+    border-bottom:3px solid red;
+} */
+.rightcontent{
+    width: 20%;
+    border: 1px solid rgb(223, 223, 223);
+}
+.rightcontent div{
+    position: relative;
+    height: 145px;
+}
