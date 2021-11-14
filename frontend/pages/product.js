@@ -4,6 +4,8 @@ import Head from 'next/head'
 import Style from '../styles/Product.module.css'
 import Logo from '../public/weblogo.png'
 import Image2 from '../public/image2.jpg'
+import CompanyCard from '../components/CompanyCard'
+import ProductCard from '../components/ProductCard'
 
 const Product = () => {
 
@@ -83,6 +85,15 @@ const Product = () => {
                     </div>
                 </div>
             </div>
+            <div style={{padding:"20px"}}>
+                <ProductCard />
+            </div>
+            <div style={{padding:"20px"}}>
+                <CompanyCard />
+            </div>
+            <footer style={{ height: "200px" }}>
+                fffff
+            </footer>
         </div>
     )
 }
