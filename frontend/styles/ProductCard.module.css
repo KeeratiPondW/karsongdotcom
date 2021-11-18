@@ -1,0 +1,39 @@
+.frame {
+    position: relative;
+    width: 200px;
+    height: fit-content;
+    margin: 5px;
+    /* border: 1px solid; */
+    box-shadow: 0 0 1px 1px rgb(201, 201, 201);
+}
+
+.image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    /* border: 1px solid yellow; */
+}
+
+.content {
+    padding: 5%;
+    line-height: normal;
+}
+
+.buttonsection {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    border-radius: 10px;
+    padding: 5px;
+    background: gold;
+    border: white 2px solid;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.button:hover{
+    background: white;
+    border: 2px gold solid;
+    color: goldenrod;
+}

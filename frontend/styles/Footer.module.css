@@ -1,0 +1,86 @@
+.line {
+    width: 100%;
+    border-top: solid 4px goldenrod;
+}
+
+.footer {
+    padding: 5%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* border: solid 1px; */
+}
+
+.comp1 {
+    grid-column: span 3;
+    padding: 50px;
+    /* border: solid 1px; */
+}
+
+.comp2 {
+    grid-column: span 3;
+    padding: 50px;
+    /* border: solid 1px; */
+}
+
+.comp3 {
+    grid-column: span 3;
+    padding: 50px;
+    /* border: solid 1px; */
+}
+
+.comp4 {
+    grid-column: span 3;
+    padding: 50px;
+    /* border: solid 1px; */
+}
+
+.line2 {
+    grid-column: span 12;
+    border-top: solid 2px rgb(196, 196, 196);
+}
+
+.copyright {
+    grid-column: span 12;
+    text-align: center;
+    padding: 10px;
+}
+
+@media (max-width:720px) {
+    .comp1 {
+        grid-column: span 12;
+        padding: 20px;
+    }
+    .comp2 {
+        grid-column: span 12;
+        padding: 20px;
+    }
+    .comp3 {
+        grid-column: span 12;
+        padding: 20px;
+    }
+    .comp4 {
+        grid-column: span 12;
+        padding: 20px;
+    }
+}
+
+@media (min-width:721px) and (max-width:1030px) {
+    .comp1 {
+        grid-column: span 3;
+        padding: 20px;
+    }
+    .comp2 {
+        grid-column: span 3;
+        padding: 20px;
+    }
+    .comp3 {
+        grid-column: span 3;
+        padding: 20px;
+    }
+    .comp4 {
+        grid-column: span 3;
+        padding: 20px;
+    }
+}

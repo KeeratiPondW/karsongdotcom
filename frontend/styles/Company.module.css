@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+
+.container{
+    width: 85%;
+    margin: auto;
+}
+.top{
+    height: 150px;
+    /* border: 1px solid; */
+}
+.navbar{
+    width: 100%;
+    /* height: 50px; */
+    display: flex;
+    justify-content: flex-end;
+}
+.navitem{
+    /* background: cornsilk; */
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: black;
+    cursor: pointer;
+    font-family: 'Prompt', sans-serif;
+    font-size: 18px;
+    border-bottom: 3px solid white;
+    transition: 0.3s;
+}
+.navitem:hover{
+    border-bottom: 3px solid darkorange;
+    color: darkorange;
+}
+.content{
+    font-family: 'Prompt', sans-serif;
+}
+.content h1{
+    border-bottom: darkorange 3px solid;
+    width: fit-content;
+}
