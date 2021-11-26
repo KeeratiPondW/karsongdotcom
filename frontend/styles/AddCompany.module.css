@@ -1,0 +1,114 @@
+.outerframe{
+    width: 100%;
+    background: rgb(250, 246, 241);
+}
+
+.frame{
+    width: 85%;
+    padding: 30px;
+    /* border: 1px solid;
+    height: 200px; */
+    margin: auto;
+    background: rgb(255, 255, 255);
+}
+.top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    position: relative;
+    border: 2px dashed rgb(129, 129, 129);
+    border-radius: 10px;
+    height: 150px;
+    width: 400px;
+    transition: 0.2s;
+}
+.logo:hover{
+    background: rgb(245, 244, 244);
+}
+.plusicon{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.name{
+    /* border: 2px solid black; */
+    height: 50px;
+    width: 400px;
+}
+.menu{
+    display: flex;
+    justify-content: flex-end;
+}
+.menuitem{
+    padding: 20px;
+    font-size: 20px;
+}
+.innercontent3{
+    display: flex;
+    flex-flow: row wrap;
+}
+.addimage{
+    width: 180px;
+    height: 240px;
+    border: goldenrod dashed 1px;
+    position: relative;
+    cursor: pointer;
+    background: rgb(248, 248, 248);
+}
+.addimageicon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+}
+.latitude{
+    display: flex;
+    align-items: center;
+}
+.longitude{
+    display: flex;
+    align-items: baseline;
+}
+.questionicon{
+    font-size: 19px;
+    color: rgb(138, 138, 138);
+}
+.submitzone{
+    display: flex;
+    justify-content: flex-end;
+}
+.submitzone button{
+    padding: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 20px;
+}
+.submitzone button:nth-child(1){
+    background: white;
+    color: orangered;
+    border: orangered 1px solid;
+    cursor: pointer;
+}
+.submitzone button:nth-child(2){
+    background: orangered;
+    color: white;
+    border: orangered 1px solid;
+    cursor: pointer;
+}
+@media (min-width: 500px) and (max-width: 1024px){
+    .frame{
+        width: 90%;
+    }
+}
+
+@media (max-width: 500px){
+    .frame{
+        width: 100%;
+    }
+}

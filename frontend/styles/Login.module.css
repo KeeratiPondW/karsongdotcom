@@ -63,6 +63,11 @@
     width: fit-content;
 }
 
-.footer{
-    background: ghostwhite;
+@media (max-width:800px){
+    .middle{
+        justify-content: center;
+    }
+    .content{
+        display: none;
+    }
 }

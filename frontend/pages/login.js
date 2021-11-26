@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Select } from 'antd'
 import { Input } from 'antd'
+import Footer from '../components/Footer'
 import Weblogo from '../public/weblogo.png'
 import Google from '../public/google.png'
 import Cat from '../public/cat1.png'
@@ -83,9 +84,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <footer className={Style.footer}>
-                footer
-            </footer>
+            <Footer />
         </div>
     )
 }

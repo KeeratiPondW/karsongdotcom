@@ -1,0 +1,45 @@
+.frame {
+    width: 180px;
+    height: auto;
+    border: 1px solid orangered;
+    padding-top: 10px;
+    position: relative;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.innerframe {
+    width: 90%;
+    height: 160px;
+    margin: auto;
+    border: dashed 1px goldenrod;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.innerframe:hover {
+    background: rgba(255, 217, 0, 0.13);
+}
+
+.icongroup {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    cursor: pointer;
+    display: flex;
+}
+
+
+.text {
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.textarea {
+    width: 100%;
+    border: 1.5px solid red;
+    resize: none;
+    outline: none;
+}
