@@ -6,6 +6,7 @@ import Background from '../public/image1.jpg'
 import Qoobee from '../public/weblogo.png'
 import { Input } from 'antd'
 import { Select } from 'antd'
+import Footer from '../components/Footer'
 
 const { Option } = Select
 
@@ -39,7 +40,9 @@ const Register = () => {
 
                 </div>
                 <div className={Style.rightmiddle}>
+                    <br/>
                     <h2 style={{ textAlign: 'center' }}>สมัครสมาชิก</h2>
+                    <br/>
                     <div className={Style.rightmiddleform}>
                         <p>Email:</p>
                         <Input
@@ -54,7 +57,7 @@ const Register = () => {
                             placeholder="confirm password"
                         />
                         <br /><br />
-                        <p>
+                        <p style={{color:"green"}}>
                             *สมัครสมาชิกฟรี <br />
                             *กรุณาตั้งรหัสผ่านโดยคำนึงถึงความปลอดภัย
                         </p>
@@ -62,9 +65,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-            <footer className={Style.footer}>
-
-            </footer>
+            <Footer/>
         </div>
     )
 }

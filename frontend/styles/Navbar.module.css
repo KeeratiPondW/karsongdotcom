@@ -1,0 +1,95 @@
+.top{
+    width: 100%;
+    height: 30px;
+    background: rgb(255, 115, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.navbar{
+    /* position: relative; */
+    width: 100%;
+    height: 100px;
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav1{
+    position: relative;
+    height: 100%;
+    width: 20%;
+    /* border: 1px solid; */
+}
+.nav2{
+    width: 60%;
+    height: 50%;
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: start;
+}
+.nav2 select{
+    width: 100px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: gold;
+    color: purple;
+    font-size: 15px;
+    border: 1px white;
+    text-align: center;
+}
+.nav2 input{
+    flex: 1;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 20px;
+    border: 2px solid gold;
+    outline: none;
+}
+.nav2 button{
+    width: 120px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: gold;
+    color: purple;
+    font-size: 15px;
+    border: white;
+    cursor: pointer;
+}
+.nav3{
+    width: 20%;
+    height: 50%;
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: center;
+}
+.navbar button:nth-child(1){
+    width: 30%;
+    color: white;
+    background: red;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.navbar button:nth-child(2){
+    width: 30%;
+    color: white;
+    background: red;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-left: white 1px dashed !important;
+    border: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.navbar button:nth-child(1):hover{
+    transform: scale(1.05);
+    border-right: white 1px dashed !important;
+}
+.navbar button:nth-child(2):hover{
+    transform: scale(1.05);
+}

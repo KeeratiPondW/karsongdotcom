@@ -1,7 +1,10 @@
+import { useState } from 'react'
+import Navbar from '../components/Navbar'
+
 const List = () => {
     return (
         <div>
-            list
+            <Navbar/>
         </div>
     )
 }
