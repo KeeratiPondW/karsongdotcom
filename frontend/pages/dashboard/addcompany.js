@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Input, Modal, Tag } from 'antd'
 import Style from '../../styles/AddCompany.module.css'
 import PlusIcon from '../../public/plus.png'
+import BinIcon from '../../public/bin.png'
 import Card from '../../subcomponents/Card'
 import { PlusOutlined, QuestionCircleOutlined } from '@ant-design/icons'
+import image from 'next/image'
 
 const { TextArea } = Input
 
@@ -35,18 +37,50 @@ const AddCompany = () => {
 
     const [tag, setTag] = useState(['tag1', "tag2", 'tag3', 'tag4'])
 
+    ////////////////////////////
+    const [images, setImages] = useState([])
+    const [imageURLs, setImageURLs] = useState([])
+
+    useEffect(() => {
+        if (images.length < 1) return;
+        const newImageURLs = []
+        images.forEach(image => newImageURLs.push(URL.createObjectURL(image)))
+        setImageURLs(newImageURLs)
+    }, [images])
+
+    const onImageChange = (e) => {
+        setImages([...e.target.files])
+    }
+    const onDeleteImage = (e) =>{
+        setImages([])
+        setImageURLs([])
+    }
+    ////////////////////////////////////////////
+
     return (
         <div className={Style.outerframe}>
             <div className={Style.frame}>
                 <br />
                 <div className={Style.top}>
                     <div className={Style.logo}>
-                        <div className={Style.plusicon}>
-                            <Image src={PlusIcon} layout="fill" objectFit="contain" />
-                        </div>
-                        <div className={Style.binicon}>
+                        <input type="file" id="img" style={{ display: "none" }} accept="image/png, image/jpg" onChange={onImageChange} />
+                        {
+                            images.length < 1 &&
+                            <label for="img" className={Style.upload}>
+                                <div className={Style.plusicon}>
+                                    <Image src={PlusIcon} layout="fill" objectFit="contain" />
+                                </div>
+                            </label>
+                        }
 
-                        </div>
+                        {imageURLs.length >= 1 && imageURLs.map((imageSrc, index) => <img key={index} width="400" height="150" src={imageSrc} />)}
+                        {
+                            imageURLs.length >= 1 &&
+                            <div className={Style.binicon} onClick={onDeleteImage}>
+                                <Image src={BinIcon} layout="fill" objectFit="contain" />
+                            </div>
+                        }
+
                     </div>
                     <div className={Style.name}>
                         <Input

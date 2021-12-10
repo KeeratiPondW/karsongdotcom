@@ -27,7 +27,12 @@
 .logo:hover{
     background: rgb(245, 244, 244);
 }
-.plusicon{
+.upload{
+    display: block;
+    width: 400px;
+    height: 150px;
+}
+.plusicon, .binicon{
     position: absolute;
     width: 40px;
     height: 40px;

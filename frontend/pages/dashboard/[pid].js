@@ -81,7 +81,9 @@ const Dashboard = () => {
             </div>
             <div className={Style.comp3}>
                 {page == "overview" ? <Overview /> : ""}
-                {page == "alllist" ? <AllList /> : ""}
+                {page == "alllist" ? <AllList current={0} /> : ""}
+                {page == "allproduct" ? <AllList current={1} /> : ""}
+                {page == "allbusiness" ? <AllList current={2} /> : ""}
                 {page == "addproduct" ? <AddProduct /> : ""}
                 {page == "addcompany" ? <AddCompany /> : ""}
                 {page == "user" ? <User /> : ""}

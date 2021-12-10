@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
 // app.put('/users/:id', db.updateUser)
 // app.delete('/users/:id', db.deleteUser)
 app.use(require('./controller/users.controller'))
+app.use(require('./controller/auth.controller'))
 
 app.get('/example', (req, res) => {
     const email = req.query.email
