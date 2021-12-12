@@ -1,0 +1,12 @@
+.frame{
+    width: 80%;
+    height: 300px;
+    margin: auto;
+    border: 1px solid;
+}
+
+@media (max-width: 450px){
+    .frame{
+        width: 100%;
+    }
+}
