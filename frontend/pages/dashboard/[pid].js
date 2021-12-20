@@ -6,8 +6,6 @@ import Weblogo from '../../public/weblogo.png'
 import { Drawer } from 'antd'
 import { MenuUnfoldOutlined } from '@ant-design/icons'
 
-import AddCompany from '../../components/AddCompany'
-import AddProduct from '../../components/AddProduct'
 import AllList from '../../components/AllList'
 import Chat from '../../components/Chat'
 import Overview from '../../components/Overview'
@@ -54,19 +52,19 @@ const Dashboard = () => {
                 </button>
             </div>
             <div className={Style.comp2}>
-                <div onClick={() => router.push('/dashboard/dashboard?page=overview')}>
+                {/* <div onClick={() => router.push('/dashboard/dashboard?page=overview')}>
                     <Image src='/home.png' width={20} height={20} />
                     &emsp;
                     Overview
-                </div>
+                </div> */}
                 <div onClick={() => router.push('/dashboard/dashboard?page=alllist')}>
                     <Image src='/list.png' width={20} height={20} />
                     &emsp;All Lists
                 </div>
-                <div onClick={() => router.push('/dashboard/dashboard?page=addproduct')}>
+                <div onClick={() => router.push('/dashboard/addproduct')}>
                     <Image src='/box.png' width={20} height={20} />
                     &emsp;Add Product</div>
-                <div onClick={() => router.push('/dashboard/dashboard?page=addcompany')}>
+                <div onClick={() => router.push('/dashboard/addcompany')}>
                     <Image src='/company.png' width={20} height={20} />
                     &emsp;Add Company
                 </div>
@@ -74,18 +72,16 @@ const Dashboard = () => {
                     <Image src='/user.png' width={20} height={20} />
                     &emsp;User
                 </div>
-                <div onClick={() => router.push('/dashboard/dashboard?page=chat')}>
+                {/* <div onClick={() => router.push('/dashboard/dashboard?page=chat')}>
                     <Image src='/chat.png' width={20} height={20} />
                     &emsp;Chat
-                </div>
+                </div> */}
             </div>
             <div className={Style.comp3}>
                 {page == "overview" ? <Overview /> : ""}
                 {page == "alllist" ? <AllList current={0} /> : ""}
                 {page == "allproduct" ? <AllList current={1} /> : ""}
                 {page == "allbusiness" ? <AllList current={2} /> : ""}
-                {page == "addproduct" ? <AddProduct /> : ""}
-                {page == "addcompany" ? <AddCompany /> : ""}
                 {page == "user" ? <User /> : ""}
                 {page == "chat" ? <Chat /> : ""}
             </div>

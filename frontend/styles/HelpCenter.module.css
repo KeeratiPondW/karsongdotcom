@@ -1,0 +1,80 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 100%;
+    height: 90px;
+    background: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    position: relative;
+    width: 260px;
+    height: 80px;
+    cursor: pointer;
+    /* border: 1px solid; */
+}
+
+.rightnav {
+    display: flex;
+}
+
+.rightnav button {
+    border: 1px solid orangered;
+    padding: 10px;
+    color: orangered;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    background: white;
+}
+
+.rightnav button:hover {
+    background: orangered;
+    color: white;
+}
+
+.rightnav button:nth-child(3) {
+    display: none;
+}
+
+.content {
+    padding-left: 10%;
+    padding-right: 10%;
+    background: whitesmoke;
+    display: flex;
+}
+
+.menu {
+    padding-top: 50px;
+    line-height: 2.2;
+}
+
+.menu a {
+    color: teal;
+}
+
+.contentofmenu {
+    padding: 30px;
+    padding-left: 50px;
+}
+
+.contentofmenu h1 {
+    color: teal;
+}
+
+.footer {
+    /* border-top: 2px solid rgb(121, 121, 121); */
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    text-align: center;
+    padding: 10px;
+    background: rgb(211, 211, 211);
+}

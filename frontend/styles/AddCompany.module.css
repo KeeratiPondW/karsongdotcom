@@ -1,6 +1,8 @@
 .outerframe{
     width: 100%;
-    background: rgb(250, 246, 241);
+    background: whitesmoke;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .frame{
@@ -18,10 +20,8 @@
 }
 .logo{
     position: relative;
-    border: 2px dashed rgb(129, 129, 129);
+    /* border: 2px dashed rgb(129, 129, 129); */
     border-radius: 10px;
-    height: 150px;
-    width: 400px;
     transition: 0.2s;
 }
 .logo:hover{
@@ -56,22 +56,9 @@
 .innercontent3{
     display: flex;
     flex-flow: row wrap;
+    gap: 20px;
 }
-.addimage{
-    width: 180px;
-    height: 240px;
-    border: goldenrod dashed 1px;
-    position: relative;
-    cursor: pointer;
-    background: rgb(248, 248, 248);
-}
-.addimageicon{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20px;
-}
+
 .latitude{
     display: flex;
     align-items: center;
@@ -94,13 +81,13 @@
     padding-right: 20px;
     margin-left: 20px;
 }
-.submitzone button:nth-child(1){
+.submitzone button:nth-child(1), .submitzone button:nth-child(2){
     background: white;
     color: orangered;
     border: orangered 1px solid;
     cursor: pointer;
 }
-.submitzone button:nth-child(2){
+.submitzone button:nth-child(3){
     background: orangered;
     color: white;
     border: orangered 1px solid;

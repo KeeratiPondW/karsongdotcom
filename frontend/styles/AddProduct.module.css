@@ -1,0 +1,125 @@
+.frame{
+    background: whitesmoke;
+}
+.comp1 {
+    background: white;
+    height: 70px;
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2), 0 0 5px 0 rgba(0, 0, 0, 0.19);
+    z-index: 1;
+}
+
+.menu {
+    background: gold;
+    border: none;
+    cursor: pointer;
+    display: none;
+    width: 60px;
+    height: 70%;
+}
+
+.logo {
+    position: relative;
+    width: 170px;
+    height: 70px;
+    /* border: 1px solid; */
+}
+
+.breadcrumb {
+    font-size: 20px;
+}
+
+.rightcomp1 {
+    display: flex;
+    /* border: 1px solid; */
+    align-items: center;
+    gap: 20px;
+    padding-right: 20px;
+}
+
+.help {
+    height: 40px;
+    border: 2px solid green;
+    background: rgb(245, 255, 246);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.help:hover {
+    color: white;
+    background: green;
+}
+
+.productdata{
+    width: 80%;
+    background: white;
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.title{
+    grid-column: span 12;
+}
+.inputtitle{
+    grid-column: span 2;
+    /* border: 1px solid; */
+    text-align: end;
+    padding: 10px;
+}
+.input{
+    grid-column: span 10;
+    /* border: 1px solid; */
+    padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.buttonzone{
+    grid-column: span 12;
+    display: flex;
+    justify-content: flex-end;
+}
+.button1, .button2{
+    padding: 7px;
+    width: 150px;
+    margin-left: 20px;
+    border: 1px solid goldenrod;
+    background: rgb(255, 246, 222);
+    color: black;
+    cursor: pointer;
+}
+
+.button3{
+    padding: 7px;
+    width: 150px;
+    margin-left: 20px;
+    border: 1px solid goldenrod;
+    background: goldenrod;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+    .menu {
+        display: block;
+    }
+    .rightcomp1 {
+        display: none;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .comp1 {
+        height: 50px;
+    }
+
+    .menu {
+        width: 50px;
+    }
+}

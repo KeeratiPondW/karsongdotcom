@@ -32,17 +32,23 @@ const Navbar = () => {
                 </div>
                 <div className={Style.rightuppernav}>
                     {
-                        isLogIn &&
-                        <>
-                            <button>
-                                ลงข้อมูลธุรกิจ
-                            </button>
-                            <button>
-                                <UserOutlined className={Style.rightuppernavicon} /> &nbsp;
-                                KeeratiChuatanapinyo
-                            </button>
+                        isLogIn ?
+                            <>
+                                <button>
+                                    <UserOutlined className={Style.rightuppernavicon} /> &nbsp;
+                                    KeeratiChuatanapinyo |
+                                </button>
+                                <button>
+                                    ลงข้อมูลธุรกิจ |
+                                </button>
+                                <button>ออกจากระบบ |</button>
 
-                        </>
+
+                            </> :
+                            <>
+                                <button>เข้าสู่ระบบ |</button>
+                                <button>สมัครสมาชิก |</button>
+                            </>
 
                     }
 
@@ -76,18 +82,6 @@ const Navbar = () => {
                     </select> */}
                     <input type='text' />
                     <button><SearchOutlined className={Style.searchicon} /></button>
-                </div>
-                <div className={Style.nav3}>
-                    {
-                        isLogIn ?
-                            <button className={Style.logout}>Logout</button> :
-                            <>
-                                <button className={Style.login}>Login</button>
-                                <button className={Style.register}>Register</button>
-                            </>
-                    }
-
-
                 </div>
             </div>
         </div>

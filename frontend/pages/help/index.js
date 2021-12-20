@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Style from '../../styles/Help.module.css'
-import Logo from '../../public/weblogo.png'
+import Logo from '../../public/karsonglogo2.png'
 import { Drawer } from 'antd'
 import { MenuUnfoldOutlined } from '@ant-design/icons'
 
@@ -38,35 +38,35 @@ const Help = () => {
                 <div className={Style.text2}>โปรดเลือกหัวข้อที่คุณต้องการด้านล่าง</div>
             </div>
             <div className={Style.content}>
-                <div className={Style.box}>
+                <div className={Style.box} onClick={() => router.push('/help/policy')}>
                     <Image src='/policy.png' width="130px" height="130px" />
                     <div style={{ paddingLeft: '20px' }}>
                         <p className={Style.text3}>นโยบายแพลตฟอล์ม</p>
                         <p className={Style.text4}></p>
                     </div>
                 </div>
-                <div className={Style.box}>
+                <div className={Style.box} onClick={() => router.push('/help/addproduct')}>
                     <Image src='/box2.png' width="130px" height="130px" />
                     <div style={{ paddingLeft: '20px' }}>
                         <p className={Style.text3}>ลงสินค้าอย่างไร</p>
                         <p className={Style.text4}></p>
                     </div>
                 </div>
-                <div className={Style.box}>
+                <div className={Style.box} onClick={() => router.push('/help/addcompany')}>
                     <Image src='/company2.png' width="130px" height="130px" />
                     <div style={{ paddingLeft: '20px' }}>
                         <p className={Style.text3}>ลงข้อมูลธุรกิจอย่างไร</p>
                         <p className={Style.text4}></p>
                     </div>
                 </div>
-                <div className={Style.box}>
+                <div className={Style.box} onClick={() => router.push('/help/payment')}>
                     <Image src='/payment.png' width="130px" height="130px" />
                     <div style={{ paddingLeft: '20px' }}>
                         <p className={Style.text3}>ชำระเงินอย่างไร</p>
                         <p className={Style.text4}></p>
                     </div>
                 </div>
-                <div className={Style.box}>
+                <div className={Style.box} onClick={() => router.push('/help/question')}>
                     <Image src='/question.png' width="130px" height="130px" />
                     <div style={{ paddingLeft: '20px' }}>
                         <p className={Style.text3}>คำถามที่พบบ่อย</p>

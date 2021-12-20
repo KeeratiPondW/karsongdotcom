@@ -1,0 +1,2 @@
+I want to read from a text file within the react project, but when i try to execute and read i get a HTML sample code 
+in the console log. This is the function:
