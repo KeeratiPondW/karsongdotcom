@@ -72,7 +72,7 @@ const Login = () => {
                     <p>{email}:</p>
                     <Input placeholder={email} />
                     <p>{password}:</p>
-                    <Input placeholder={password} />
+                    <Input.Password placeholder={password} />
                     <br /><br />
                     <button className={Style.loginbutton}>{login}</button>
                     <br /><br />

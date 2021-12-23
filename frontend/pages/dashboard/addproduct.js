@@ -142,10 +142,10 @@ const AddProduct = () => {
                     />
                 </div>
                 <div className={Style.inputtitle}>
-                    คลัง
+                    ราคา
                 </div>
                 <div className={Style.input}>
-                    <Input placeholder="20" />
+                    <Input placeholder="0" />
                 </div>
                 <div className={Style.inputtitle}>
                     ขั้นต่ำ
@@ -208,9 +208,9 @@ const AddProduct = () => {
                     />
                 </div>
                 <div className={Style.buttonzone}>
-                    <button className={Style.button1}>
+                    {/* <button className={Style.button1}>
                         preview
-                    </button>
+                    </button> */}
                     <button className={Style.button2}>
                         บันทึกแต่ไม่ยังแสดง
                     </button>

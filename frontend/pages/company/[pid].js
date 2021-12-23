@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import Style from '../styles/Company.module.css'
-import Weblogo from '../public/weblogo.png'
+import Style from '../../styles/Company.module.css'
+import Weblogo from '../../public/weblogo.png'
 import { Anchor, Tag } from 'antd'
 
 const { Link } = Anchor
