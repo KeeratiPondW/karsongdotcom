@@ -9,6 +9,13 @@
     /* justify-content: space-between; */
 }
 
+.lefthead {
+    height: 90px;
+    width: 300px;
+    position: relative;
+    /* border: 1px solid; */
+}
+
 .middle {
     width: 100%;
     height: 550px;
@@ -68,6 +75,15 @@
 }
 
 @media (max-width: 600px) {
+    .head {
+        padding-left: 5%;
+    }
+
+    .lefthead {
+        height: 50px;
+        width: 210px;
+    }
+
     .leftmiddle {
         display: none;
     }

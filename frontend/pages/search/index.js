@@ -1,5 +1,6 @@
 import Style from '../../styles/Search.module.css'
 import Navbar from '../../subcomponents/Navbar'
+import Footer from '../../components/Footer'
 
 const Search = () => {
     return (
@@ -8,6 +9,7 @@ const Search = () => {
             <div className={Style.frame}>
 
             </div>
+            <Footer/>
         </div>
     )
 }

@@ -9,7 +9,7 @@ import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
 const Navbar = () => {
-    const [isLogIn, setIsLogIn] = useState(true)
+    const [isLogIn, setIsLogIn] = useState(false)
     const [showMenu, setShowMenu] = useState(false)
     // const [category, setCategory] = useState("volvo")
 

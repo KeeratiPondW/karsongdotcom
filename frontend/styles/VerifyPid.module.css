@@ -1,0 +1,45 @@
+.container {
+    width: 100%;
+    background: rgb(244, 221, 203);
+    min-height: 100vh;
+}
+
+.verify {
+    position: absolute;
+    /* border: 1px solid; */
+    width: 90%;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+}
+
+.image {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    margin: auto;
+    /* border: 1px solid; */
+}
+
+.text{
+    font-size: 30px;
+}
+
+.loginbutton{
+    padding: 10px;
+    width: 200px;
+    background: orangered;
+    border: 1px solid orangered;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 500px){
+    .text{
+        font-size: 25px;
+    }
+    .verify{
+        top: 5%;
+    }
+}

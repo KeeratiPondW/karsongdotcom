@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Style from '../styles/Register.module.css'
 import Background from '../public/image1.jpg'
 import Qoobee from '../public/weblogo.png'
+import Logo from '../public/karsonglogo2.png'
 import { Input } from 'antd'
 import { Select } from 'antd'
 import Footer from '../components/Footer'
@@ -12,9 +13,9 @@ const { Option } = Select
 
 const Register = () => {
 
-    function handleChange(value) {
-        console.log(`selected ${value}`);
-    }
+    // function handleChange(value) {
+    //     console.log(`selected ${value}`);
+    // }
 
     return (
         <div>
@@ -25,39 +26,45 @@ const Register = () => {
             </Head>
             <div className={Style.head}>
                 <div className={Style.lefthead}>
-                    <Image src={Qoobee} alt="web logo" height={90} width={300}/>
+                    <Image src={Logo} alt="web logo" layout='fill' objectFit='contain' />
                 </div>
-                <div className={Style.righthead}>
+                {/* <div className={Style.righthead}>
                     <Select defaultValue="thai" style={{ width: 120 }} onChange={handleChange}>
                         <Option value="thai">ภาษาไทย</Option>
                         <Option value="english">English</Option>
                     </Select>
-                </div>
+                </div> */}
             </div>
-            {/* <br/> */}
             <div className={Style.middle}>
                 <div className={Style.leftmiddle}>
-
                 </div>
                 <div className={Style.rightmiddle}>
-                    <br/>
+                    <br />
                     <h2 style={{ textAlign: 'center' }}>สมัครสมาชิก</h2>
-                    <br/>
+                    <br />
                     <div className={Style.rightmiddleform}>
-                        <p>Email:</p>
-                        <Input
-                            placeholder="email"
-                        />
-                        <p>Password:</p>
-                        <Input
-                            placeholder="password"
-                        />
-                        <p>Confirm Password:</p>
-                        <Input
-                            placeholder="confirm password"
-                        />
-                        <br /><br />
-                        <p style={{color:"green"}}>
+                        <p>Username:
+                            <Input
+                                placeholder="กำหนดชื่อผู้ใช้"
+                            />
+                        </p>
+
+                        <p>Email:
+                            <Input
+                                placeholder="อีเมล"
+                            />
+                        </p>
+                        <p>Password:
+                            <Input
+                                placeholder="รหัสผ่าน"
+                            />
+                        </p>
+                        <p>ยืนยัน Password:
+                            <Input
+                                placeholder="ยืนยันรหัสผ่าน"
+                            />
+                        </p>
+                        <p style={{ color: "green" }}>
                             *สมัครสมาชิกฟรี <br />
                             *กรุณาตั้งรหัสผ่านโดยคำนึงถึงความปลอดภัย
                         </p>
@@ -65,7 +72,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

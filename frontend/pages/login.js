@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Select } from 'antd'
-import { Input } from 'antd'
+import axios from 'axios'
+import { Select, Input, Spin } from 'antd'
 import Footer from '../components/Footer'
-import Weblogo from '../public/weblogo.png'
+import Weblogo from '../public/karsonglogo2.png'
 import Google from '../public/google.png'
 import Cat from '../public/cat1.png'
 import Facebook from '../public/facebook.png'
@@ -14,29 +14,35 @@ const { Option } = Select
 
 const Login = () => {
 
-    const [language, setLanguage] = useState("thai")
-    const [email, setEmail] = useState("Email Address")
-    const [password, setPassword] = useState("Password")
-    const [login, setLogin] = useState("Login")
-    const [or, setOr] = useState("or")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [isCorrectEmail, setIsCorrectEmail] = useState(true)
+    const [loading, setLoading] = useState(false)
 
-    const handleChange = (value) => {
-        setLanguage(value)
+    const onChangeEmail = (e) => {
+        setEmail(e.target.value)
     }
 
-    useEffect(() => {
-        if (language === "english") {
-            setEmail("Email Address")
-            setPassword("Password")
-            setLogin("Login")
-            setOr("or")
+    const onChangePassword = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const onSubmit = async () => {
+        setLoading(true)
+        if (email.toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            ) && email !== "" && password !== "") {
+            const result = await axios.post('http://localhost:4000/login', { email, password })
+            console.log(result)
         } else {
-            setEmail("อีเมล")
-            setPassword("รหัสผ่าน")
-            setLogin("เข้าสู่ระบบ")
-            setOr("หรือ")
+            setIsCorrectEmail(false)
+            setTimeout(() => {
+                setIsCorrectEmail(true)
+            }, 4000)
         }
-    }, [language])
+        setLoading(false)
+    }
 
     return (
         <div>
@@ -46,21 +52,21 @@ const Login = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className={Style.navbar}>
-                <div>
+                <div className={Style.logoimage}>
                     <Image
                         src={Weblogo}
                         alt="weblogo"
                         placeholder="blur"
-                        height={90}
-                        width={300}
+                        layout='fill'
+                        objectFit='contain'
                     />
                 </div>
-                <div>
+                {/* <div>
                     <Select defaultValue="thai" style={{ width: 120 }} onChange={handleChange}>
                         <Option value="thai">ภาษาไทย</Option>
                         <Option value="english">English</Option>
                     </Select>
-                </div>
+                </div> */}
             </div>
             <div className={Style.middle}>
                 <div className={Style.content}>
@@ -69,14 +75,33 @@ const Login = () => {
                     <Image src={Cat} alt="cat" height={50} width={60} />
                 </div>
                 <div className={Style.login}>
-                    <p>{email}:</p>
-                    <Input placeholder={email} />
-                    <p>{password}:</p>
-                    <Input.Password placeholder={password} />
+                    <p>
+                        อีเมล:
+                        <Input
+                            placeholder="อีเมล"
+                            value={email}
+                            onChange={onChangeEmail}
+                        />
+                    </p>
+                    <p>
+                        รหัสผ่าน:
+                        <Input.Password
+                            placeholder="รหัสผ่าน"
+                            value={password}
+                            onChange={onChangePassword}
+                        />
+                    </p>
+                    {!isCorrectEmail && <p style={{ color: 'red' }}>email รูปแบบไม่ถูกต้อง</p>}
+                    <button
+                        className={Style.loginbutton}
+                        style={{ background: loading ? "rgba(0,128,0,0.5)" : "green" }}
+                        onClick={onSubmit}
+                        disabled={loading ? true : false}
+                    >
+                        เข้าสู่ระบบ
+                    </button>
                     <br /><br />
-                    <button className={Style.loginbutton}>{login}</button>
-                    <br /><br />
-                    <p className={Style.line}>{or}</p>
+                    <p className={Style.line}>หรือ</p>
                     <div className={Style.loginchoice}>
                         <Image src={Facebook} alt="facebook" placeholder="blur" width={50} height={50} />
                         &emsp;
