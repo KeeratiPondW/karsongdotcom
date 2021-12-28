@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
     width: 100%;
     height: 100px;
     /* border: solid 1px; */
@@ -8,14 +8,14 @@
     align-items: center;
 }
 
-.logoimage{
+.logoimage {
     position: relative;
     height: 70px;
     width: 300px;
     /* border: 1px solid; */
 }
 
-.middle{
+.middle {
     width: 100%;
     height: 450px;
     /* border: solid 1px black; */
@@ -26,20 +26,23 @@
     justify-content: space-between;
     background-image: url('../public/background1.png');
 }
-.content{
-    width: auto;
+
+.content {
+    width: 400px;
     height: 350px;
-    border: 1px solid ;
-    padding: 20px ;
+    /* border: 1px solid; */
+    position: relative;
 }
-.login{
+
+.login {
     width: 350px;
     height: 350px;
     border: 1px solid yellow;
-    padding: 20px ;
-    background:white;
+    padding: 20px;
+    background: white;
 }
-.loginbutton{
+
+.loginbutton {
     background-color: green;
     color: white;
     width: 100%;
@@ -47,24 +50,27 @@
     border: none;
 }
 
-.line{
+.line {
     display: flex;
     flex-direction: row;
 }
-.line:before, .line:after{
+
+.line:before, .line:after {
     content: "";
     flex: 1 1;
     border-bottom: 1px solid rgb(189, 189, 189);
     margin: auto;
 }
+
 .line:before {
     margin-right: 10px
 }
+
 .line:after {
     margin-left: 10px
 }
 
-.loginchoice{
+.loginchoice {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -72,20 +78,22 @@
     width: fit-content;
 }
 
-@media (max-width:800px){
-    .middle{
+@media (max-width:800px) {
+    .middle {
         justify-content: center;
     }
-    .content{
+
+    .content {
         display: none;
     }
 }
 
-@media (max-width:600px){
-    .navbar{
+@media (max-width:600px) {
+    .navbar {
         padding-left: 5%;
     }
-    .logoimage{
+
+    .logoimage {
         width: 210px;
         height: 50px;
     }

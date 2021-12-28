@@ -7,27 +7,25 @@ const login = async (req, res) => {
     try {
         const { email, password } = req.body
         if (!(email && password)) {
-            return res.status(400).send("All input is required");
+            return res.json({ auth: false, message: "All input is required" }) //status 400
         }
 
         const user = await pool.query('SELECT * FROM users WHERE email = $1', [email.toLowerCase()])
         if (user.rowCount != 0 && await bcrypt.compare(password, user.rows[0].password)) {
             const token = jwt.sign(
-                { 
-                    id: user.rows[0].id, 
-                    email, 
-                    username: user.rows[0].username, 
+                {
+                    id: user.rows[0].id,
+                    email,
+                    username: user.rows[0].username,
                     role: user.rows[0].role
                 },
                 process.env.JWT_SECRET,
                 { expiresIn: "48h" }
             )
-            user.rows[0].token = token
-            user.rows[0].password = ""
 
-            return res.status(200).json(user.rows[0])
+            return res.status(200).json({ auth: true, token })
         }
-        res.send("อีเมลหรือรหัสผ่านไม่ถูกต้อง") //status 400
+        res.json({ auth: false, message: "อีเมลหรือรหัสผ่านไม่ถูกต้อง" }) //status 400
     } catch (err) {
         console.log(err)
     }
@@ -56,10 +54,10 @@ const register = async (req, res) => {
         const user = await pool.query('INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *', [username, email.toLowerCase(), encryptedPassword])
 
         const token = jwt.sign(
-            { 
-                id: user.rows[0].id, 
-                email, 
-                username: user.rows[0].username, 
+            {
+                id: user.rows[0].id,
+                email,
+                username: user.rows[0].username,
                 role: user.rows[0].role
             },
             process.env.JWT_SECRET,
@@ -77,7 +75,12 @@ const register = async (req, res) => {
     }
 }
 
+const isLoggedIn = (req, res) => {   //for login and register page
+    res.json({ auth: true , data: req.user})
+}
+
 module.exports = {
     login,
-    register
+    register,
+    isLoggedIn
 }

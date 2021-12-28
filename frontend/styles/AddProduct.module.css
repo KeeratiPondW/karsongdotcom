@@ -23,7 +23,7 @@
 
 .logo {
     position: relative;
-    width: 170px;
+    width: 200px;
     height: 70px;
     /* border: 1px solid; */
 }
@@ -104,12 +104,26 @@
     cursor: pointer;
 }
 
+.menuitem{
+    cursor: pointer;
+}
+
 @media (max-width: 1000px) {
     .menu {
         display: block;
     }
     .rightcomp1 {
         display: none;
+    }
+    .inputtitle{
+        grid-column: span 12;
+        text-align: start;
+    }
+    .input{
+        grid-column: span 12;
+    }
+    .productdata{
+        width: 90%;
     }
 
 }
@@ -121,5 +135,21 @@
 
     .menu {
         width: 50px;
+    }
+    .breadcrumb{
+        display: none;
+    }
+    .buttonzone{
+        display: grid;
+    }
+    .button2{
+        margin-bottom: 10px;
+    }
+    .productdata{
+        width: 100%;
+        margin-top: 5px;
+    }
+    .brtag{
+        display: none;
     }
 }

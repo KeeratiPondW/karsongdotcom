@@ -7,9 +7,10 @@ const {
     updateUser,
     deleteUser,
 } = require('../router/users.router')
+const auth = require("../middleware/auth")
 
 router.get('/users', getUsers)
-router.get('/users/:id', getUserById)
+router.get('/users/:id', auth, getUserById)
 router.post('/users', createUser)
 router.put('/users/:id', updateUser)
 router.delete('/users/:id', deleteUser)

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import axios from 'axios'
+import { useCookies } from "react-cookie"
 import { Select, Input, Spin } from 'antd'
 import Footer from '../components/Footer'
 import Weblogo from '../public/karsonglogo2.png'
@@ -10,14 +12,28 @@ import Cat from '../public/cat1.png'
 import Facebook from '../public/facebook.png'
 import Style from '../styles/Login.module.css'
 
+import api from '../api/api'
+
 const { Option } = Select
 
-const Login = () => {
+const Login = ({ data }) => {
+    const [cookie, setCookie] = useCookies(["token"])
+    const router = useRouter()
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [isCorrectEmail, setIsCorrectEmail] = useState(true)
+    const [isCorrectEmail, setIsCorrectEmail] = useState(true) // check email pattern
     const [loading, setLoading] = useState(false)
+    const [message, setMessage] = useState("") //check email and password
+
+    useEffect(async () => {
+        try {
+            const result = await axios.get(api.isloggedin, { headers: { 'x-access-token': data.token } })
+            if (result.data.auth) router.push("/")
+        } catch (err) {
+            console.log(err)
+        }
+    }, [data])
 
     const onChangeEmail = (e) => {
         setEmail(e.target.value)
@@ -29,17 +45,31 @@ const Login = () => {
 
     const onSubmit = async () => {
         setLoading(true)
-        if (email.toLowerCase()
-            .match(
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            ) && email !== "" && password !== "") {
-            const result = await axios.post('http://localhost:4000/login', { email, password })
-            console.log(result)
+        if (email.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+            && email !== "" && password !== "") {
+            try {
+                const result = await axios.post(api.login, { email, password })
+                if (result.data.auth) {
+                    setCookie("token", result.data.token, {
+                        path: "/",
+                        maxAge: 2 * 24 * 60 * 60, // Expires after 1hr
+                        sameSite: true,
+                    })
+                    router.push("/")
+                } else {
+                    setMessage(result.data.message)
+                    setTimeout(() => {
+                        setMessage("")
+                    }, 5000)
+                }
+            } catch (err) {
+                console.log(err)
+            }
         } else {
             setIsCorrectEmail(false)
             setTimeout(() => {
                 setIsCorrectEmail(true)
-            }, 4000)
+            }, 5000)
         }
         setLoading(false)
     }
@@ -70,9 +100,7 @@ const Login = () => {
             </div>
             <div className={Style.middle}>
                 <div className={Style.content}>
-                    <h1>ค้าส่งดอทคอม</h1>
-                    <h2>ตอบโจทย์ธุรกิจคุณ</h2>
-                    <Image src={Cat} alt="cat" height={50} width={60} />
+                    <Image src="https://firebasestorage.googleapis.com/v0/b/karsongarcade.appspot.com/o/images%2Fstore.png?alt=media&token=a0494c8d-3a85-4286-b222-f8c1343f6134" layout='fill' objectFit='contain' />
                 </div>
                 <div className={Style.login}>
                     <p>
@@ -92,6 +120,7 @@ const Login = () => {
                         />
                     </p>
                     {!isCorrectEmail && <p style={{ color: 'red' }}>email รูปแบบไม่ถูกต้อง</p>}
+                    <p style={{ color: 'red' }}>{message}</p>
                     <button
                         className={Style.loginbutton}
                         style={{ background: loading ? "rgba(0,128,0,0.5)" : "green" }}
@@ -112,6 +141,14 @@ const Login = () => {
             <Footer />
         </div>
     )
+}
+
+export const getServerSideProps = async ({ req, res }) => {
+    const { cookies } = req
+
+    return {
+        props: { data: cookies }
+    }
 }
 
 export default Login;

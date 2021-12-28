@@ -1,30 +1,34 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useCookies } from 'react-cookie'
 import Style from './Navbar.module.css'
-import Logo from '../public/weblogo.png'
 import WebLogo from '../public/karsonglogo.png'
 import { SearchOutlined, UserOutlined, FacebookOutlined, MenuFoldOutlined } from '@ant-design/icons'
 
 import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 
-const Navbar = () => {
-    const [isLogIn, setIsLogIn] = useState(false)
+const Navbar = ({ isLoggedIn, id, username }) => {
+    const router = useRouter()
+    const [cookies, removeCookie] = useCookies(['token'])
     const [showMenu, setShowMenu] = useState(false)
-    // const [category, setCategory] = useState("volvo")
-
-    // const onChangeCategory = (e) => {
-    //     setCategory(e.target.value)
-    //     console.log(e.target.value)
-    // }
 
     const onClickShowMenu = () => {
         setShowMenu(prevShowMenu => !prevShowMenu)
     }
 
+    const goToDashboard = () => {
+        router.push('/dashboard/dashboard?page=alllist')
+    }
+
+    const logout = () =>{
+        removeCookie("token")
+        router.push("/login")
+    }
+
     return (
         <div>
-            {/* 1207 246 */}
             <div className={Style.uppernav}>
                 <div className={Style.leftuppernav}>
                     ติดตามเราได้บน &nbsp;
@@ -32,22 +36,22 @@ const Navbar = () => {
                 </div>
                 <div className={Style.rightuppernav}>
                     {
-                        isLogIn ?
+                        isLoggedIn ?
                             <>
                                 <button>
                                     <UserOutlined className={Style.rightuppernavicon} /> &nbsp;
-                                    KeeratiChuatanapinyo |
+                                    {username} |
                                 </button>
-                                <button>
+                                <button onClick={goToDashboard}>
                                     ลงข้อมูลธุรกิจ |
                                 </button>
-                                <button>ออกจากระบบ |</button>
+                                <button onClick={logout}>ออกจากระบบ |</button>
 
 
                             </> :
                             <>
-                                <button>เข้าสู่ระบบ |</button>
-                                <button>สมัครสมาชิก |</button>
+                                <button onClick={() => router.push('/login')}>เข้าสู่ระบบ |</button>
+                                <button onClick={() => router.push('/register')}>สมัครสมาชิก |</button>
                             </>
 
                     }
@@ -59,13 +63,20 @@ const Navbar = () => {
                 {
                     showMenu ?
                         <div className={Style.hiddenmenu}>
-                            <div>Log In</div>
-                            <div>Sign Up</div>
-                            <div>ลงข้อมูลธุรกิจ</div>
-                            <div>
-                                <button>Log Out</button> &nbsp;
-                                KeeratiChuatanapinyo
-                            </div>
+                            {
+                                isLoggedIn ?
+                                    <>
+                                        <div onClick={goToDashboard}>ลงข้อมูลธุรกิจ</div>
+                                        <div>
+                                            <button onClick={logout}>Log Out</button> &nbsp;
+                                            {username}
+                                        </div>
+                                    </> :
+                                    <>
+                                        <div onClick={() => router.push('/login')}>Log In</div>
+                                        <div onClick={() => router.push("/register")}>Sign Up</div>
+                                    </>
+                            }
                         </div> : null
                 }
             </SlideDown>

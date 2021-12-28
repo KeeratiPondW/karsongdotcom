@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Head from 'next/head'
 import { useRouter } from "next/router"
+import { useCookies } from 'react-cookie'
 import Style from '../../styles/dashboard.module.css'
 import Weblogo from '../../public/weblogo.png'
 import { Drawer } from 'antd'
@@ -11,13 +13,14 @@ import Chat from '../../components/Chat'
 import Overview from '../../components/Overview'
 import User from '../../components/User'
 
-const Dashboard = () => {
+import api from '../../api/api'
+import axios from 'axios'
+
+const Dashboard = ({ data }) => {
     const router = useRouter()
+    const [cookies, removeCookie] = useCookies(['token'])
     const { page, pid } = router.query //pid="dashboard"
     //http://localhost:3000/dashboard/dashboard?page=alllist
-
-    console.log(pid)
-    console.log(page)
 
     const [visible, setVisible] = useState(false);
     const showDrawer = () => {
@@ -27,8 +30,39 @@ const Dashboard = () => {
         setVisible(false);
     };
 
+    ////////////////////////////////////////////////
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [userId, setUserId] = useState(-1)
+    const [username, setUsername] = useState("")
+
+    useEffect(async () => {
+        try {
+            const result = await axios.get(api.isloggedin, { headers: { 'x-access-token': data.token } })
+            if (result.data.auth) {
+                setIsLoggedIn(true)
+                setUserId(result.data.data.id)
+                setUsername(result.data.data.username)
+            } else {
+                setIsLoggedIn(false)
+                router.push("/login")
+            }
+            console.log(result.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }, [data])
+
+    const logout = () => {
+        removeCookie("token")
+        router.push("/login")
+    }
+
     return (
         <div className={Style.container}>
+            <Head>
+                <title>Karsong | Dashboard</title>
+                <meta name="description" content="" />
+            </Head>
             <div className={Style.comp1}>
                 <div style={{ display: "flex", alignItems: "center", paddingLeft: "20px" }}>
                     <div className={Style.logo}>
@@ -40,9 +74,9 @@ const Dashboard = () => {
                 </div>
                 <div className={Style.rightcomp1}>
                     <Image src='/user.png' width={30} height={30} />
-                    <h3>Keerati Chuatanapinyo&emsp;</h3>
+                    <h3>{username}&emsp;</h3>
                     <Image src='/noti.png' width={22} height={22} />
-                    <Image src='/logout.png' width={20} height={20} />
+                    <Image src='/logout.png' width={20} height={20} onClick={logout} />
                     <button className={Style.help} onClick={() => router.push('/help')}>
                         &emsp;ศูนย์ช่วยเหลือ&emsp;
                     </button>
@@ -128,15 +162,23 @@ const Dashboard = () => {
                 }}>
                     Chat
                 </div>
-                <div onClick={() => router.push('/login')} className={Style.menuitem}>
+                <div onClick={() => router.push('/help')} className={Style.menuitem}>
                     ศูนย์ช่วยเหลือ
                 </div>
-                <div onClick={() => router.push('/help')} className={Style.menuitem}>
+                <div onClick={logout} className={Style.menuitem}>
                     ออกจากระบบ
                 </div>
             </Drawer>
         </div>
     )
+}
+
+export const getServerSideProps = async ({ req, res }) => {
+    const { cookies } = req
+
+    return {
+        props: { data: cookies }
+    }
 }
 
 export default Dashboard
