@@ -23,6 +23,14 @@ const AddProduct = () => {
 
     const [name, setName] = useState("")
     const [productDetail, setProductDetail] = useState("")
+    const [imageFile1, setImageFile1] = useState("")
+    const [imageFile2, setImageFile2] = useState("")
+    const [imageFile3, setImageFile3] = useState("")
+    const [imageFile4, setImageFile4] = useState("")
+    const [imageFile5, setImageFile5] = useState("")
+    const [imageFile6, setImageFile6] = useState("")
+    const [imageFile7, setImageFile7] = useState("")
+    const [imageFile8, setImageFile8] = useState("")
     const [price, setPrice] = useState(0)
     const [minimum, setMinimum] = useState(1)
     const [category, setCategory] = useState([])
@@ -48,6 +56,9 @@ const AddProduct = () => {
         setLocationDetail(e.target.value)
     }
 
+    console.log("imageFile1: ", imageFile1)
+    console.log("imageFile2: ", imageFile2)
+
     return (
         <div className={Style.frame}>
             <Head>
@@ -67,7 +78,7 @@ const AddProduct = () => {
                     <Image src='/user.png' width={30} height={30} />
                     <h3>Keerati Chuatanapinyo&emsp;</h3>
                     <Image src='/noti.png' width={22} height={22} />
-                    <Image src='/logout.png' width={20} height={20} />
+                    {/* <Image src='/logout.png' width={20} height={20} /> */}
                     <button className={Style.help} onClick={() => router.push('/help')}>
                         &emsp;ศูนย์ช่วยเหลือ&emsp;
                     </button>
@@ -88,7 +99,7 @@ const AddProduct = () => {
                 </p>
             </Drawer>
 
-            <br className={Style.brtag}/>
+            <br className={Style.brtag} />
             <div className={Style.productdata}>
                 <h2 className={Style.title}>ข้อมูลทั่วไป</h2>
                 <div className={Style.inputtitle}>
@@ -120,14 +131,14 @@ const AddProduct = () => {
                     <UploadImage
                         caption="รูปภาพหลัก"
                         captionInput="none"
-                        // setImage={setImage}
+                        setImage={setImageFile1}
                         width={140}
                         height={160}
                     />
                     <UploadImage
                         captionInput="none"
                         caption="รูปภาพ 1"
-                        // setImage={setImage}
+                        setImage={setImageFile2}
                         width={140}
                         height={160}
                     />

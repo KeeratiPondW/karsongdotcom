@@ -7,13 +7,7 @@ const UploadImage = ({caption, captionInput, captionPlaceholder, width, height, 
     const [imageURL, setImageURL] = useState("")
     // const [captionValue, setCaptionValue] = useState("")
     const [key, setKey] = useState("")
-
-    // useEffect(() => {
-    //     if (image === "") return;
-    //     setImageURL(URL.createObjectURL(image))
-    //     console.log(URL.createObjectURL(image))
-    // }, [image])
-
+    
     const onImageChange = (e) => {
         setImage(e.target.files[0])
         setImageURL(URL.createObjectURL(e.target.files[0]))
@@ -37,13 +31,11 @@ const UploadImage = ({caption, captionInput, captionPlaceholder, width, height, 
                             <p className={Style.plusicon}>+</p>
                             {/* <PlusOutlined  /> */}
                         </label> :
-                        <div className={Style.binicon}>delete</div>
-                    // <DeleteOutlined className={Style.binicon} onClick={onDeleteImage} />
+                        <DeleteOutlined className={Style.binicon} onClick={onDeleteImage} />
                 }
                 {
                     imageURL !== "" && <img className={Style.image} src={imageURL} />
                 }
-
             </div>
             {
                 caption && <p style={{textAlign:'center'}}>{caption}</p>
